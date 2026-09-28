@@ -3,8 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MCP Server, Context Engine &amp; RAG — IDEAgent</title>
-  <meta name="description" content="The IDEAgent MCP server ships a local web GUI — open it at the container's address (for example http://localhost/ui) to browse your projects, settings, tools, context engine, RAG collections and logs. Everything stays on infrastructure you control." />
+  <title>Project Context — MCP Server, Context Engine &amp; RAG — IDEAgent</title>
+  <meta name="description" content="The IDEAgent MCP server ships a local web GUI — open it at the container's address (for example http://localhost/ui) to browse your projects, settings, tools, context engine, RAG collections and logs. Indexing and storage stay on infrastructure you control." />
+  <link rel="canonical" href="https://ideagent.github.io/mcp.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="IDEAgent" />
+  <meta property="og:title" content="Project Context — MCP Server, Context Engine &amp; RAG — IDEAgent" />
+  <meta property="og:description" content="The IDEAgent MCP server ships a local web GUI to browse your projects, settings, tools, context engine, RAG collections and logs. Indexing and storage stay on infrastructure you control." />
+  <meta property="og:url" content="https://ideagent.github.io/mcp.html" />
+  <meta property="og:image" content="https://ideagent.github.io/assets/chat.png" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" href="ideagent_logo.png" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,7 +45,7 @@
         This is the memory of the system, and it comes with its own <strong>web GUI</strong>. It runs as
         a container and serves a browser interface at the container's address — for example
         <code>http://localhost/ui</code>. From there you manage the projects the agent knows about,
-        inspect what it has indexed, and watch what it is doing — all on your own machine.
+        inspect what it has indexed, and watch what it is doing — all on infrastructure you control.
       </p>
     </div>
   </section>
@@ -105,7 +113,7 @@
           <li><strong>Documentation</strong> that has been ingested for the project.</li>
         </ul>
         <p>
-          Everything here is computed and stored on infrastructure you control: the full codebase stays in your RAG instance, and the agent retrieves the chunks and embeddings it needs to work. When you configure a hosted model, that retrieved context is what gets sent to it — which is why we recommend a fully local setup (with Ollama) when you want nothing to leave infrastructure you control at all.
+          Everything here is computed and stored on infrastructure you control: the full codebase stays in your RAG instance, and the agent retrieves the chunks and embeddings it needs to work. When you configure a hosted model, that retrieved context is what gets sent to it — which is why we recommend a fully local setup (with Ollama) when you want nothing to leave your environment at all.
         </p>
       </div>
 
@@ -166,12 +174,13 @@
       <div class="doc-section">
         <h2>Privacy by construction</h2>
         <p>
-          Everything here stays on infrastructure you control: indexing runs on your own hardware, the
+          Indexing and storage stay on infrastructure you control: indexing runs on your own hardware, the
           collections live in a store you host, and retrieval returns only the small, relevant slices the
           agent needs. The file watcher may upload a changed file to the RAG server, and that server can be
           a different host from the editing machine — but both run inside your own infrastructure (for
-          example, our container installed in your environment), so the codebase is never transmitted to an
-          external model provider. Paired with a local Ollama provider on the
+          example, our container installed in your environment), so the full codebase is never transmitted to an
+          external model provider — only the retrieved slices are sent, and only if you configure a hosted
+          model. Paired with a local Ollama provider on the
           <a href="gateway.html">Gateway</a>, no code or context leaves infrastructure you control at all.
         </p>
         <p style="margin-top:24px"><a href="architecture.html" class="btn btn-secondary">See the full architecture →</a></p>
