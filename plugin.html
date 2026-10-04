@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://ideagent.github.io/plugin.html" />
   <meta property="og:image" content="https://ideagent.github.io/assets/chat.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" type="image/png" href="ideagent_logo.png" />
+  <link rel="icon" type="image/png" href="assets/ideagent_logo.png" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,7 +24,7 @@
   <!-- Nav -->
   <header class="nav">
     <div class="container nav-inner">
-      <a href="index.html" class="logo"><img src="ideagent_logo.png" alt="" class="logo-mark" />IDE<span class="logo-accent">Agent</span></a>
+      <a href="index.html" class="logo"><img src="assets/ideagent_logo.png" alt="IDEAgent Logo" class="logo-mark" />IDE<span class="logo-accent">Agent</span></a>
       <nav class="nav-links">
         <a href="index.html#packages">Why IDEAgent</a>
         <a href="architecture.html">Architecture</a>
@@ -50,18 +50,11 @@
       <p style="margin-top:16px">
         <a href="gateway_plugin_setup.html" class="btn btn-secondary">New here? Follow the 5-minute quick setup →</a>
       </p>
-      <div id="marketplace-card" class="marketplace-card" style="margin-top:16px"></div>
-      <p class="hero-marketplace-note">Available on the JetBrains Marketplace — install directly into PyCharm / IntelliJ.</p>
-      <div class="marketplace-badges">
-        <span class="marketplace-badge">
-          <span class="marketplace-badge-label">IDEAgent</span>
-          <span id="marketplace-get-ideagent"></span>
-        </span>
-        <span class="marketplace-badge">
-          <span class="marketplace-badge-label">RAG File Watcher</span>
-          <span id="marketplace-get-rag-filewatcher"></span>
-        </span>
+      <div class="marketplace-cards">
+        <div id="marketplace-card-ideagent" class="marketplace-card"></div>
+        <div id="marketplace-card-rag" class="marketplace-card"></div>
       </div>
+      <p class="hero-marketplace-note">Available on the JetBrains Marketplace — install directly into PyCharm / IntelliJ.</p>
     </div>
   </section>
 
@@ -93,6 +86,27 @@
           <code>sudo</code> and <code>docker</code> commands still pause for your approval even when Auto
           is <strong>on</strong>. This safeguard can't be turned off from the Auto switch — those
           commands are simply too consequential to run unattended.
+        </p>
+      </div>
+
+      <div class="doc-section">
+        <h2>Full suite setup &amp; onboarding tutorial</h2>
+        <p>
+          This step-by-step video tutorial walks through how to set up the complete IDEAgent suite on a
+          resource-constrained machine — demonstrated on a <strong>MacBook Air (Late 2018, Intel Core i5, 3.7 GB RAM)</strong>.
+          It covers the onboarding phase, initial configuration, and demonstrates how all parts of the system interact in real time.
+        </p>
+        <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/SoAd_3W2c0I?start=11"
+            title="IDEAgent full suite setup tutorial on MacBook Air Late 2018 i5"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <p class="marketplace-embed-note">
+          <a href="https://www.youtube.com/watch?v=SoAd_3W2c0I&t=11s" target="_blank" rel="noopener">Watch on YouTube: Full Suite Setup Tutorial (MacBook Air Late 2018 i5 3.7GB RAM) ↗</a>
         </p>
       </div>
 
@@ -255,13 +269,12 @@
       var lastClickedUrl = null;
 
       function updateTarget(e) {
-        var card = document.getElementById('marketplace-card');
-        var ideagent = document.getElementById('marketplace-get-ideagent');
-        var rag = document.getElementById('marketplace-get-rag-filewatcher');
+        var cardIde = document.getElementById('marketplace-card-ideagent');
+        var cardRag = document.getElementById('marketplace-card-rag');
 
-        if ((card && card.contains(e.target)) || (ideagent && ideagent.contains(e.target))) {
+        if (cardIde && cardIde.contains(e.target)) {
           lastClickedUrl = IDEAGENT_URL;
-        } else if (rag && rag.contains(e.target)) {
+        } else if (cardRag && cardRag.contains(e.target)) {
           lastClickedUrl = RAG_URL;
         }
       }
@@ -298,9 +311,8 @@
             originalOpen.call(window, url, '_blank', 'noopener');
           }, true);
         }
-        bind('marketplace-card', IDEAGENT_URL);
-        bind('marketplace-get-ideagent', IDEAGENT_URL);
-        bind('marketplace-get-rag-filewatcher', RAG_URL);
+        bind('marketplace-card-ideagent', IDEAGENT_URL);
+        bind('marketplace-card-rag', RAG_URL);
       }
 
       if (document.readyState === 'loading') {
@@ -312,9 +324,8 @@
   </script>
   <script src="https://plugins.jetbrains.com/assets/scripts/mp-widget.js"></script>
   <script>
-    MarketplaceWidget.setupMarketplaceWidget('card', 34241, "#marketplace-card");
-    MarketplaceWidget.setupMarketplaceWidget('install', 34241, "#marketplace-get-ideagent");
-    MarketplaceWidget.setupMarketplaceWidget('install', 34243, "#marketplace-get-rag-filewatcher");
+    MarketplaceWidget.setupMarketplaceWidget('card', 34241, "#marketplace-card-ideagent");
+    MarketplaceWidget.setupMarketplaceWidget('card', 34243, "#marketplace-card-rag");
   </script>
 
 </body>

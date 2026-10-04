@@ -29,7 +29,8 @@
   <meta name="twitter:image" content="https://ideagent.github.io/assets/chat.png" />
 
   <!-- Assets & Stylesheets -->
-  <link rel="icon" type="image/png" href="ideagent_logo.png" />
+  <link rel="icon" type="image/png" href="assets/ideagent_logo.png" />
+  <link rel="apple-touch-icon" href="assets/ideagent_logo.png" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,23 +40,44 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "IDEAgent",
-    "operatingSystem": "Windows, macOS, Linux",
-    "applicationCategory": "DeveloperApplication",
-    "applicationSubCategory": "AI Coding Assistant Plugin",
-    "url": "https://ideagent.github.io/",
-    "image": "https://ideagent.github.io/assets/chat.png",
-    "softwareHelp": {
-      "@type": "CreativeWork",
-      "url": "https://ideagent.github.io/plugin.html"
-    },
-    "description": "A privacy-focused, self-hosted AI coding agent plugin for JetBrains PyCharm featuring local RAG and optional egress-side secret redaction.",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "EUR"
-    }
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://ideagent.github.io/#website",
+        "url": "https://ideagent.github.io/",
+        "name": "IDEAgent",
+        "description": "Privacy-First Local AI Coding Assistant & Plugin for PyCharm",
+        "publisher": {
+          "@type": "Organization",
+          "name": "IDEAgent",
+          "url": "https://ideagent.github.io/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://ideagent.github.io/assets/ideagent_logo.png"
+          }
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://ideagent.github.io/#software",
+        "name": "IDEAgent",
+        "operatingSystem": "Windows, macOS, Linux",
+        "applicationCategory": "DeveloperApplication",
+        "applicationSubCategory": "AI Coding Assistant Plugin",
+        "url": "https://ideagent.github.io/",
+        "image": "https://ideagent.github.io/assets/chat.png",
+        "softwareHelp": {
+          "@type": "CreativeWork",
+          "url": "https://ideagent.github.io/plugin.html"
+        },
+        "description": "A privacy-focused, self-hosted AI coding agent plugin for JetBrains PyCharm featuring local RAG and optional egress-side secret redaction.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        }
+      }
+    ]
   }
   </script>
 </head>
@@ -65,12 +87,13 @@
   <!-- Nav -->
   <header class="nav">
     <div class="container nav-inner">
-      <a href="index.html" class="logo"><img src="ideagent_logo.png" alt="" class="logo-mark" />IDE<span class="logo-accent">Agent</span></a>
+      <a href="index.html" class="logo"><img src="assets/ideagent_logo.png" alt="IDEAgent Logo" class="logo-mark" />IDE<span class="logo-accent">Agent</span></a>
       <nav class="nav-links">
         <a href="#local">Local</a>
         <a href="#redaction">Redaction</a>
         <a href="#why-not">Why not X</a>
         <a href="architecture.html">Architecture</a>
+        <a href="plugin.html">Plugin</a>
         <a href="#compare">Compare</a>
         <a href="#issues">Support</a>
         <a href="https://github.com/ideagent" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
@@ -82,7 +105,7 @@
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-brand">
-        <img src="ideagent_logo.png" alt="" class="hero-logo" width="56" height="56" />
+        <img src="assets/ideagent_logo.png" alt="IDEAgent Logo" class="hero-logo" width="56" height="56" />
         <span class="hero-wordmark">IDE<span class="logo-accent">Agent</span></span>
       </div>
       <div class="badge">AI coding on infrastructure you control</div>
@@ -352,6 +375,14 @@
     <div class="container footer-inner">
       <span class="logo">IDE<span class="logo-accent">Agent</span></span>
       <p class="footer-note">Each package carries its own license. Please refer to individual package documentation for details.</p>
+      <div class="footer-links">
+        <a href="architecture.html">Architecture</a>
+        <a href="plugin.html">Plugin</a>
+        <a href="gateway_plugin_setup.html">Setup Guide</a>
+        <a href="gateway.html">Gateway</a>
+        <a href="mcp.html">MCP &amp; RAG</a>
+        <a href="server_config.html">Model Config</a>
+      </div>
       <div class="footer-links">
         <a href="https://github.com/ideagent" target="_blank" rel="noopener">GitHub</a>
         <a href="https://github.com/ideagent/.github/issues" target="_blank" rel="noopener">Issues</a>
