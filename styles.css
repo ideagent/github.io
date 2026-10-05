@@ -1008,7 +1008,9 @@ a.node:hover {
 .redaction-shot {
   display: block;
   width: 100%;
+  max-width: 539px;
   height: auto;
+  aspect-ratio: 539 / 166;
   border: 1px solid var(--border);
   border-radius: 10px;
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4);
