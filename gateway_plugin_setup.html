@@ -14,10 +14,19 @@
   <meta property="og:image" content="https://ideagent.github.io/assets/chat.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" href="assets/ideagent_logo.png" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="https://plugins.jetbrains.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://plugins.jetbrains.com" crossorigin />
+  <link rel="preload" as="style" href="styles.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  </noscript>
   <link rel="describedby" href="llms.txt" />
 </head>
 <body>
@@ -269,9 +278,21 @@ pip install piper-tts</div>
   </footer>
 
   <!-- JetBrains Marketplace install widget -->
-  <script src="https://plugins.jetbrains.com/assets/scripts/mp-widget.js"></script>
+  <script src="https://plugins.jetbrains.com/assets/scripts/mp-widget.js" defer id="jetbrains-mp-widget"></script>
   <script>
-    MarketplaceWidget.setupMarketplaceWidget('install', 34241, "#marketplace-install");
+    (function () {
+      var initialized = false;
+      function initWidget() {
+        if (initialized || !window.MarketplaceWidget) return;
+        var target = document.querySelector("#marketplace-install");
+        if (!target) return;
+        initialized = true;
+        MarketplaceWidget.setupMarketplaceWidget('install', 34241, target);
+      }
+      var s = document.getElementById('jetbrains-mp-widget');
+      if (s) s.addEventListener('load', initWidget);
+      document.addEventListener('DOMContentLoaded', initWidget);
+    })();
   </script>
 
   <script src="main.js" defer></script>

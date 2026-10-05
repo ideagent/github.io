@@ -28,13 +28,29 @@
   <meta name="twitter:description" content="Self-hosted RAG, context assembly on infrastructure you control, and absolute zero telemetry tracking." />
   <meta name="twitter:image" content="https://ideagent.github.io/assets/chat.png" />
 
+  <!-- DNS prefetch & preconnect for external assets -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="https://plugins.jetbrains.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://plugins.jetbrains.com" crossorigin />
+
   <!-- Assets & Stylesheets -->
   <link rel="icon" type="image/png" href="assets/ideagent_logo.png" />
   <link rel="apple-touch-icon" href="assets/ideagent_logo.png" />
+  <link rel="preload" as="style" href="styles.css" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Preload critical hero LCP image -->
+  <link rel="preload" as="image" href="assets/screen_chat.webp" type="image/webp" fetchpriority="high" />
+
+  <!-- Non-render-blocking Web Fonts -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  </noscript>
 
   <!-- Google Rich Snippet Search Optimization (JSON-LD Schema) -->
   <script type="application/ld+json">
@@ -453,9 +469,21 @@
   </script>
 
   <!-- JetBrains Marketplace install widget -->
-  <script src="https://plugins.jetbrains.com/assets/scripts/mp-widget.js"></script>
+  <script src="https://plugins.jetbrains.com/assets/scripts/mp-widget.js" defer id="jetbrains-mp-widget"></script>
   <script>
-    MarketplaceWidget.setupMarketplaceWidget('install', 34241, "#marketplace-install");
+    (function () {
+      var initialized = false;
+      function initWidget() {
+        if (initialized || !window.MarketplaceWidget) return;
+        var target = document.querySelector("#marketplace-install");
+        if (!target) return;
+        initialized = true;
+        MarketplaceWidget.setupMarketplaceWidget('install', 34241, target);
+      }
+      var s = document.getElementById('jetbrains-mp-widget');
+      if (s) s.addEventListener('load', initWidget);
+      document.addEventListener('DOMContentLoaded', initWidget);
+    })();
   </script>
 
   <script src="main.js" defer></script>
