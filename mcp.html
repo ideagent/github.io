@@ -24,8 +24,13 @@
   <!-- Nav -->
   <header class="nav">
     <div class="container nav-inner">
-      <a href="index.html" class="logo"><img src="assets/ideagent_logo.png" alt="IDEAgent Logo" class="logo-mark" />IDE<span class="logo-accent">Agent</span></a>
-      <nav class="nav-links">
+      <a href="index.html" class="logo"><img src="assets/ideagent_logo.webp" alt="IDEAgent Logo" class="logo-mark" width="24" height="24" decoding="async" />IDE<span class="logo-accent">Agent</span></a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav id="main-nav" class="nav-links">
         <a href="index.html#packages">Why IDEAgent</a>
         <a href="architecture.html">Architecture</a>
         <a href="plugin.html">Plugin</a>
@@ -66,7 +71,7 @@
           <li>The tabs across the top take you to the rest: Settings, Tools, Context Engine, RAG Collections and Logs.</li>
         </ol>
         <figure class="setup-shot">
-          <img src="assets/MCP_WEB_GUI.png" alt="Project Context web GUI showing the Projects list with registered projects" loading="lazy" />
+          <img width="1119" height="500" src="assets/MCP_WEB_GUI.webp" alt="Project Context web GUI showing the Projects list with registered projects" loading="lazy" decoding="async" />
           <figcaption><strong>The web GUI.</strong> Each project card shows its path, type and when it was registered. From a card you can open its <em>Learnings</em>, review <em>Changes</em>, <em>Edit</em> its details or remove it — and <em>Refresh</em> re-reads the list.</figcaption>
         </figure>
       </div>
@@ -232,5 +237,6 @@
     </div>
   </footer>
 
+  <script src="main.js" defer></script>
 </body>
 </html>

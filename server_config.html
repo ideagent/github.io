@@ -43,15 +43,16 @@
     <div class="container nav-inner">
 
       <a href="index.html" class="logo">
-        <img
-          src="assets/ideagent_logo.png"
-          alt="IDEAgent Logo"
-          class="logo-mark"
-        />
+        <img src="assets/ideagent_logo.webp" alt="IDEAgent Logo" class="logo-mark" width="24" height="24" decoding="async" />
         IDE<span class="logo-accent">Agent</span>
       </a>
 
-      <nav class="nav-links">
+            <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav id="main-nav" class="nav-links">
         <a href="index.html#packages">Why IDEAgent</a>
         <a href="architecture.html">Architecture</a>
         <a href="plugin.html">Plugin</a>
@@ -2750,5 +2751,6 @@
 
   </footer>
 
+  <script src="main.js" defer></script>
 </body>
 </html>

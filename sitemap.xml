@@ -8,20 +8,24 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://ideagent.github.io/assets/chat.png</image:loc>
+      <image:loc>https://ideagent.github.io/assets/chat.webp</image:loc>
       <image:title>IDEAgent Chat Interface</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://ideagent.github.io/assets/review.png</image:loc>
-      <image:title>IDEAgent Code Review</image:title>
+      <image:loc>https://ideagent.github.io/assets/threads.webp</image:loc>
+      <image:title>IDEAgent Threads and Multi-agent View</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://ideagent.github.io/assets/settings.png</image:loc>
-      <image:title>IDEAgent Settings</image:title>
+      <image:loc>https://ideagent.github.io/assets/tasks.webp</image:loc>
+      <image:title>IDEAgent Task Execution and Progress</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://ideagent.github.io/assets/models.png</image:loc>
-      <image:title>IDEAgent Model Configuration</image:title>
+      <image:loc>https://ideagent.github.io/assets/edits.webp</image:loc>
+      <image:title>IDEAgent Code Edits and Diff View</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ideagent.github.io/assets/reducted.webp</image:loc>
+      <image:title>IDEAgent Egress Secret Redaction</image:title>
     </image:image>
   </url>
   <url>
@@ -32,31 +36,47 @@
   </url>
   <url>
     <loc>https://ideagent.github.io/plugin.html</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ideagent.github.io/assets/Plugin_Main_Settings.webp</image:loc>
+      <image:title>IDEAgent Plugin Settings</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://ideagent.github.io/gateway.html</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ideagent.github.io/mcp.html</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ideagent.github.io/assets/MCP_WEB_GUI.webp</image:loc>
+      <image:title>IDEAgent MCP Web GUI</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://ideagent.github.io/gateway_plugin_setup.html</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://ideagent.github.io/assets/Plugin_Main_Settings.webp</image:loc>
+      <image:title>IDEAgent Gateway Plugin Setup</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ideagent.github.io/assets/MCP_Servers.webp</image:loc>
+      <image:title>IDEAgent MCP Servers Configuration</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://ideagent.github.io/server_config.html</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

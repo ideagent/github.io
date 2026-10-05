@@ -24,8 +24,13 @@
   <!-- Nav -->
   <header class="nav">
     <div class="container nav-inner">
-      <a href="index.html" class="logo"><img src="assets/ideagent_logo.png" alt="IDEAgent Logo" class="logo-mark" />IDE<span class="logo-accent">Agent</span></a>
-      <nav class="nav-links">
+      <a href="index.html" class="logo"><img src="assets/ideagent_logo.webp" alt="IDEAgent Logo" class="logo-mark" width="24" height="24" decoding="async" />IDE<span class="logo-accent">Agent</span></a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav id="main-nav" class="nav-links">
         <a href="index.html#packages">Why IDEAgent</a>
         <a href="architecture.html">Architecture</a>
         <a href="gateway.html">Gateway</a>
@@ -117,11 +122,11 @@
           Each section maps to one screen you fill in once.
         </p>
         <figure class="setup-shot">
-          <img src="assets/Plugin_Main_Settings.png" alt="IDEAgent plugin main settings panel" loading="lazy" />
+          <img width="606" height="366" src="assets/Plugin_Main_Settings.webp" alt="IDEAgent plugin main settings panel" loading="lazy" decoding="async" />
           <figcaption><strong>Main settings.</strong> Point the plugin at your Gateway and set the defaults for new threads (starting Auto mode, editor behaviour). Use <em>Test connection</em> to confirm the Gateway is reachable before you start.</figcaption>
         </figure>
         <figure class="setup-shot">
-          <img src="assets/Plugin_all_settings.png" alt="IDEAgent plugin settings overview with all sub-pages" loading="lazy" />
+          <img width="282" height="181" src="assets/Plugin_all_settings.webp" alt="IDEAgent plugin settings overview with all sub-pages" loading="lazy" decoding="async" />
           <figcaption><strong>All settings at a glance.</strong> The sub-pages — MCP Servers, Models &amp; API keys, Dedicated models, RAG, Speech-to-text and Text-to-speech — are reached from here. Set them up in the order below.</figcaption>
         </figure>
       </div>
@@ -134,7 +139,7 @@
           server, toggle it on, and refresh to confirm it is reachable.
         </p>
         <figure class="setup-shot">
-          <img src="assets/MCP_Servers.png" alt="MCP Servers settings page" loading="lazy" />
+          <img width="789" height="375" src="assets/MCP_Servers.webp" alt="MCP Servers settings page" loading="lazy" decoding="async" />
           <figcaption><strong>MCP Servers.</strong> Add each server, enable it, and use the refresh/status control to verify the connection. Disabled servers are simply not offered to the agent.</figcaption>
         </figure>
       </div>
@@ -154,7 +159,7 @@
           completely offline.
         </p>
         <figure class="setup-shot">
-          <img src="assets/API_KEYS.png" alt="Models & API keys settings — Anthropic, OpenAI and Google API key fields plus the Ollama base URL" loading="lazy" />
+          <img width="732" height="344" src="assets/API_KEYS.webp" alt="Models & API keys settings — Anthropic, OpenAI and Google API key fields plus the Ollama base URL" loading="lazy" decoding="async" />
           <figcaption><strong>Models &amp; API keys.</strong> Enter your <em>Anthropic</em>, <em>OpenAI</em> and <em>Google</em> API keys (each stored securely in the OS keychain) and set the <em>Ollama base URL</em>. Any provider you supply a key for appears in the model picker; the Ollama URL is optional and, left blank, falls back to the gateway's own <code>OLLAMA_BASE_URL</code>.</figcaption>
         </figure>
       </div>
@@ -167,7 +172,7 @@
           or one of your configured providers) is enough for both.
         </p>
         <figure class="setup-shot">
-          <img src="assets/Dedicated_Models.png" alt="Dedicated models settings — auto-titles and RAG model" loading="lazy" />
+          <img width="642" height="274" src="assets/Dedicated_Models.webp" alt="Dedicated models settings — auto-titles and RAG model" loading="lazy" decoding="async" />
           <figcaption><strong>Dedicated models.</strong> Enable auto-titles and pick a small model for it, and choose the model used for RAG. A compact local model (served by Ollama) is enough for both.</figcaption>
         </figure>
       </div>
@@ -180,11 +185,11 @@
           Connect it to your machines, then let it index.
         </p>
         <figure class="setup-shot">
-          <img src="assets/RAG_Setting1.png" alt="RAG file watcher settings — connection" loading="lazy" />
+          <img width="1032" height="542" src="assets/RAG_Setting1.webp" alt="RAG file watcher settings — connection" loading="lazy" decoding="async" />
           <figcaption><strong>Connection.</strong> Point the watcher at your RAG server and confirm it links to the machine(s) you want indexed.</figcaption>
         </figure>
         <figure class="setup-shot">
-          <img src="assets/RAG_Settings2.png" alt="RAG file watcher settings — indexing and status" loading="lazy" />
+          <img width="863" height="503" src="assets/RAG_Settings2.webp" alt="RAG file watcher settings — indexing and status" loading="lazy" decoding="async" />
           <figcaption><strong>Indexing &amp; status.</strong> Watch the index build and stay current as you edit. Indexing quality is highest on CUDA GPUs; it still works on shared-memory GPUs (Dell / Mac), just with reduced quality.</figcaption>
         </figure>
       </div>
@@ -201,7 +206,7 @@
           <li>Use <strong>Detect</strong> to locate the installed binary, then select a model to download.</li>
         </ol>
         <figure class="setup-shot">
-          <img src="assets/Speech-to-text.png" alt="Speech-to-text (Whisper) settings" loading="lazy" />
+          <img width="647" height="314" src="assets/Speech-to-text.webp" alt="Speech-to-text (Whisper) settings" loading="lazy" decoding="async" />
           <figcaption><strong>Speech-to-text.</strong> Once detected and a model is downloaded, you can dictate to the agent. The audio never leaves your machine.</figcaption>
         </figure>
       </div>
@@ -217,7 +222,7 @@
           <li>Use <strong>Detect</strong> to locate the binary, then download a voice.</li>
         </ol>
         <figure class="setup-shot">
-          <img src="assets/Text_to_Speach.png" alt="Text-to-speech (Piper) settings" loading="lazy" />
+          <img width="711" height="340" src="assets/Text_to_Speach.webp" alt="Text-to-speech (Piper) settings" loading="lazy" decoding="async" />
           <figcaption><strong>Text-to-speech.</strong> With a voice downloaded, the agent can read its replies aloud — no cloud speech service involved.</figcaption>
         </figure>
       </div>
@@ -328,5 +333,6 @@
     MarketplaceWidget.setupMarketplaceWidget('card', 34243, "#marketplace-card-rag");
   </script>
 
+  <script src="main.js" defer></script>
 </body>
 </html>

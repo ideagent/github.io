@@ -24,8 +24,13 @@
   <!-- Nav -->
   <header class="nav">
     <div class="container nav-inner">
-      <a href="index.html" class="logo"><img src="assets/ideagent_logo.png" alt="IDEAgent Logo" class="logo-mark" />IDE<span class="logo-accent">Agent</span></a>
-      <nav class="nav-links">
+      <a href="index.html" class="logo"><img src="assets/ideagent_logo.webp" alt="IDEAgent Logo" class="logo-mark" width="24" height="24" decoding="async" />IDE<span class="logo-accent">Agent</span></a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav id="main-nav" class="nav-links">
         <a href="index.html#packages">Why IDEAgent</a>
         <a href="architecture.html">Architecture</a>
         <a href="plugin.html">Plugin</a>
@@ -95,7 +100,7 @@
           are running.
         </p>
         <figure class="setup-shot">
-          <img src="assets/Plugin_Main_Settings.png" alt="IDEAgent main settings with the Gateway URL box and Test connection button" loading="lazy" />
+          <img width="606" height="366" src="assets/Plugin_Main_Settings.webp" alt="IDEAgent main settings with the Gateway URL box and Test connection button" loading="lazy" decoding="async" />
           <figcaption><strong>Main settings.</strong> Put your gateway address in the <em>Gateway URL</em> box (server IP + port, or <code>localhost</code> if it runs on this machine), then press <em>Test connection</em>.</figcaption>
         </figure>
       </div>
@@ -123,7 +128,7 @@
           have is <code>mcp-server</code>.
         </p>
         <figure class="setup-shot">
-          <img src="assets/MCP_Servers.png" alt="MCP Servers settings page showing mcp-server connected on port 5820" loading="lazy" />
+          <img width="789" height="375" src="assets/MCP_Servers.webp" alt="MCP Servers settings page showing mcp-server connected on port 5820" loading="lazy" decoding="async" />
           <figcaption><strong>MCP Servers.</strong> Add <code>mcp-server</code> with the block above, then check for the green &ldquo;connected&rdquo; dot. Note the MCP port is <code>5820</code> — different from the gateway port in Step 1.</figcaption>
         </figure>
       </div>
@@ -146,7 +151,7 @@
           a box blank to let the gateway fall back to its own setting for that provider.
         </p>
         <figure class="setup-shot">
-          <img src="assets/API_KEYS.png" alt="Models and API keys settings with Anthropic, OpenAI, Google key fields and the Ollama base URL" loading="lazy" />
+          <img width="732" height="344" src="assets/API_KEYS.webp" alt="Models and API keys settings with Anthropic, OpenAI, Google key fields and the Ollama base URL" loading="lazy" decoding="async" />
           <figcaption><strong>Models &amp; API keys.</strong> Fill in the key(s) for the provider you want, or set the <em>Ollama base URL</em> to stay fully local. Any provider you give a key to shows up in the model picker.</figcaption>
         </figure>
       </div>
@@ -165,7 +170,7 @@
         </ul>
         <p>A small, fast model is plenty for both of these.</p>
         <figure class="setup-shot">
-          <img src="assets/Dedicated_Models.png" alt="Dedicated models settings with a Title Model and a RAG Model chosen" loading="lazy" />
+          <img width="642" height="274" src="assets/Dedicated_Models.webp" alt="Dedicated models settings with a Title Model and a RAG Model chosen" loading="lazy" decoding="async" />
           <figcaption><strong>Dedicated models.</strong> Turn on <em>Auto-Titles</em> and pick a small Title model, then choose your RAG model. With Ollama, pick the local model your RAG should use.</figcaption>
         </figure>
         <div class="callout">
@@ -267,5 +272,6 @@ pip install piper-tts</div>
     MarketplaceWidget.setupMarketplaceWidget('install', 34241, "#marketplace-install");
   </script>
 
+  <script src="main.js" defer></script>
 </body>
 </html>

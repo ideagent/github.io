@@ -65,12 +65,12 @@
         "applicationCategory": "DeveloperApplication",
         "applicationSubCategory": "AI Coding Assistant Plugin",
         "url": "https://ideagent.github.io/",
-        "image": "https://ideagent.github.io/assets/chat.png",
+        "image": "https://ideagent.github.io/assets/chat.webp",
         "screenshot": [
-          "https://ideagent.github.io/assets/chat.png",
-          "https://ideagent.github.io/assets/threads.png",
-          "https://ideagent.github.io/assets/tasks.png",
-          "https://ideagent.github.io/assets/edits.png"
+          "https://ideagent.github.io/assets/chat.webp",
+          "https://ideagent.github.io/assets/threads.webp",
+          "https://ideagent.github.io/assets/tasks.webp",
+          "https://ideagent.github.io/assets/edits.webp"
         ],
         "softwareHelp": {
           "@type": "CreativeWork",
@@ -93,8 +93,13 @@
   <!-- Nav -->
   <header class="nav">
     <div class="container nav-inner">
-      <a href="index.html" class="logo"><img src="assets/ideagent_logo.png" alt="IDEAgent Logo" class="logo-mark" />IDE<span class="logo-accent">Agent</span></a>
-      <nav class="nav-links">
+      <a href="index.html" class="logo"><img src="assets/ideagent_logo.webp" alt="IDEAgent Logo" class="logo-mark" width="24" height="24" decoding="async" />IDE<span class="logo-accent">Agent</span></a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav id="main-nav" class="nav-links">
         <a href="#local">Local</a>
         <a href="#redaction">Redaction</a>
         <a href="#why-not">Why not X</a>
@@ -111,7 +116,7 @@
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-brand">
-        <img src="assets/ideagent_logo.png" alt="IDEAgent Logo" class="hero-logo" width="56" height="56" />
+        <img src="assets/ideagent_logo.webp" alt="IDEAgent Logo" class="hero-logo" width="56" height="56" decoding="async" />
         <span class="hero-wordmark">IDE<span class="logo-accent">Agent</span></span>
       </div>
       <div class="badge">AI coding on infrastructure you control</div>
@@ -128,10 +133,10 @@
       </p>
       <div class="hero-showcase">
         <div id="showcase-panel" class="showcase-stage" role="tabpanel" aria-labelledby="tab-chat" aria-live="polite">
-          <img id="view-chat" src="assets/chat.png" alt="IDEAgent chat view" class="showcase-img is-active" data-view="chat" width="1363" height="670" fetchpriority="high" />
-          <img id="view-threads" src="assets/threads.png" alt="IDEAgent threads view" class="showcase-img" data-view="threads" width="1365" height="668" loading="lazy" />
-          <img id="view-tasks" src="assets/tasks.png" alt="IDEAgent tasks view" class="showcase-img" data-view="tasks" width="1366" height="673" loading="lazy" />
-          <img id="view-edits" src="assets/edits.png" alt="IDEAgent edits view" class="showcase-img" data-view="edits" width="1360" height="675" loading="lazy" />
+          <img id="view-chat" src="assets/chat.webp" alt="IDEAgent chat view" class="showcase-img is-active" data-view="chat" width="1363" height="670" fetchpriority="high" decoding="async" />
+          <img id="view-threads" src="assets/threads.webp" alt="IDEAgent threads view" class="showcase-img" data-view="threads" width="1365" height="668" loading="lazy" decoding="async" />
+          <img id="view-tasks" src="assets/tasks.webp" alt="IDEAgent tasks view" class="showcase-img" data-view="tasks" width="1366" height="673" loading="lazy" decoding="async" />
+          <img id="view-edits" src="assets/edits.webp" alt="IDEAgent edits view" class="showcase-img" data-view="edits" width="1360" height="675" loading="lazy" decoding="async" />
         </div>
         <div class="showcase-dots" role="tablist" aria-label="Product screenshots">
           <button type="button" class="showcase-dot is-active" role="tab" id="tab-chat" aria-controls="showcase-panel" data-target="chat" aria-label="Chat view" aria-selected="true" tabindex="0"></button>
@@ -180,7 +185,7 @@
         <a href="gateway.html#redaction" class="btn btn-primary">How redaction works →</a>
       </div>
       <div class="redaction-demo">
-        <img src="assets/reducted.png" alt="A live IDEAgent turn: terminal and read_file tool output with secret values shown as redacted secret tokens, and a note that the agent must not write those redacted tokens back" class="redaction-shot" loading="lazy" />
+        <img width="539" height="166" src="assets/reducted.webp" alt="A live IDEAgent turn: terminal and read_file tool output with secret values shown as redacted secret tokens, and a note that the agent must not write those redacted tokens back" class="redaction-shot" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>
@@ -451,5 +456,6 @@
     MarketplaceWidget.setupMarketplaceWidget('install', 34241, "#marketplace-install");
   </script>
 
+  <script src="main.js" defer></script>
 </body>
 </html>
