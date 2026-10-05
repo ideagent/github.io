@@ -66,6 +66,12 @@
         "applicationSubCategory": "AI Coding Assistant Plugin",
         "url": "https://ideagent.github.io/",
         "image": "https://ideagent.github.io/assets/chat.png",
+        "screenshot": [
+          "https://ideagent.github.io/assets/chat.png",
+          "https://ideagent.github.io/assets/threads.png",
+          "https://ideagent.github.io/assets/tasks.png",
+          "https://ideagent.github.io/assets/edits.png"
+        ],
         "softwareHelp": {
           "@type": "CreativeWork",
           "url": "https://ideagent.github.io/plugin.html"
@@ -121,17 +127,17 @@
         including regulated fields like banking and medical software.
       </p>
       <div class="hero-showcase">
-        <div class="showcase-stage">
-          <img src="assets/chat.png" alt="IDEAgent chat view" class="showcase-img is-active" data-view="chat" />
-          <img src="assets/threads.png" alt="IDEAgent threads view" class="showcase-img" data-view="threads" />
-          <img src="assets/tasks.png" alt="IDEAgent tasks view" class="showcase-img" data-view="tasks" />
-          <img src="assets/edits.png" alt="IDEAgent edits view" class="showcase-img" data-view="edits" />
+        <div id="showcase-panel" class="showcase-stage" role="tabpanel" aria-labelledby="tab-chat" aria-live="polite">
+          <img id="view-chat" src="assets/chat.png" alt="IDEAgent chat view" class="showcase-img is-active" data-view="chat" width="1363" height="670" fetchpriority="high" />
+          <img id="view-threads" src="assets/threads.png" alt="IDEAgent threads view" class="showcase-img" data-view="threads" width="1365" height="668" loading="lazy" />
+          <img id="view-tasks" src="assets/tasks.png" alt="IDEAgent tasks view" class="showcase-img" data-view="tasks" width="1366" height="673" loading="lazy" />
+          <img id="view-edits" src="assets/edits.png" alt="IDEAgent edits view" class="showcase-img" data-view="edits" width="1360" height="675" loading="lazy" />
         </div>
         <div class="showcase-dots" role="tablist" aria-label="Product screenshots">
-          <button type="button" class="showcase-dot is-active" data-target="chat" aria-label="Chat" aria-selected="true"></button>
-          <button type="button" class="showcase-dot" data-target="threads" aria-label="Threads" aria-selected="false"></button>
-          <button type="button" class="showcase-dot" data-target="tasks" aria-label="Tasks" aria-selected="false"></button>
-          <button type="button" class="showcase-dot" data-target="edits" aria-label="Edits" aria-selected="false"></button>
+          <button type="button" class="showcase-dot is-active" role="tab" id="tab-chat" aria-controls="showcase-panel" data-target="chat" aria-label="Chat view" aria-selected="true" tabindex="0"></button>
+          <button type="button" class="showcase-dot" role="tab" id="tab-threads" aria-controls="showcase-panel" data-target="threads" aria-label="Threads view" aria-selected="false" tabindex="-1"></button>
+          <button type="button" class="showcase-dot" role="tab" id="tab-tasks" aria-controls="showcase-panel" data-target="tasks" aria-label="Tasks view" aria-selected="false" tabindex="-1"></button>
+          <button type="button" class="showcase-dot" role="tab" id="tab-edits" aria-controls="showcase-panel" data-target="edits" aria-label="Edits view" aria-selected="false" tabindex="-1"></button>
         </div>
       </div>
       <div class="hero-cta">
@@ -393,19 +399,47 @@
 
   <script>
     (function () {
-      var dots = document.querySelectorAll('.showcase-dot');
+      var stage = document.getElementById('showcase-panel');
+      var dots = Array.prototype.slice.call(document.querySelectorAll('.showcase-dot'));
       var imgs = document.querySelectorAll('.showcase-img');
-      dots.forEach(function (dot) {
+
+      function selectTab(dot) {
+        var target = dot.getAttribute('data-target');
+        dots.forEach(function (d) {
+          var active = d === dot;
+          d.classList.toggle('is-active', active);
+          d.setAttribute('aria-selected', active ? 'true' : 'false');
+          d.setAttribute('tabindex', active ? '0' : '-1');
+        });
+        if (stage) {
+          stage.setAttribute('aria-labelledby', dot.id);
+        }
+        imgs.forEach(function (img) {
+          img.classList.toggle('is-active', img.getAttribute('data-view') === target);
+        });
+      }
+
+      dots.forEach(function (dot, index) {
         dot.addEventListener('click', function () {
-          var target = dot.getAttribute('data-target');
-          dots.forEach(function (d) {
-            var active = d === dot;
-            d.classList.toggle('is-active', active);
-            d.setAttribute('aria-selected', active ? 'true' : 'false');
-          });
-          imgs.forEach(function (img) {
-            img.classList.toggle('is-active', img.getAttribute('data-view') === target);
-          });
+          selectTab(dot);
+        });
+
+        dot.addEventListener('keydown', function (e) {
+          var newIndex = -1;
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            newIndex = (index + 1) % dots.length;
+          } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            newIndex = (index - 1 + dots.length) % dots.length;
+          } else if (e.key === 'Home') {
+            newIndex = 0;
+          } else if (e.key === 'End') {
+            newIndex = dots.length - 1;
+          }
+          if (newIndex !== -1) {
+            e.preventDefault();
+            dots[newIndex].focus();
+            selectTab(dots[newIndex]);
+          }
         });
       });
     })();

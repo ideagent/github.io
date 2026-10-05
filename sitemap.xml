@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <!-- Main Landing Page -->
   <url>
     <loc>https://ideagent.github.io/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ideagent.github.io/assets/chat.png</image:loc>
+      <image:title>IDEAgent Chat Interface</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ideagent.github.io/assets/review.png</image:loc>
+      <image:title>IDEAgent Code Review</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ideagent.github.io/assets/settings.png</image:loc>
+      <image:title>IDEAgent Settings</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ideagent.github.io/assets/models.png</image:loc>
+      <image:title>IDEAgent Model Configuration</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://ideagent.github.io/architecture.html</loc>
