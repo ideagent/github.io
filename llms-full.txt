@@ -1,0 +1,145 @@
+# IDEAgent - Complete Documentation
+
+> Comprehensive reference documentation for IDEAgent, an autonomous coding agent plugin for JetBrains IDEs.
+
+Table of Contents:
+1. Overview & Core Features
+2. System Architecture
+3. Gateway Server & Deployment
+4. Gateway Plugin Pairing
+5. Model Context Protocol (MCP) Tools
+6. JetBrains Plugin Settings
+7. Server Configuration & Security Boundaries
+
+---
+
+## 1. Overview & Core Features
+
+IDEAgent is an autonomous software development agent that runs directly within JetBrains IDEs (IntelliJ IDEA, PyCharm, WebStorm, PhpStorm, GoLand, CLion, RustRover).
+
+### Core Features
+- **In-IDE Execution**: Runs inside your IDE with direct access to editor tabs, project structure, terminal runners, and syntax trees.
+- **Three Core Modes**:
+  1. *Chat*: Interactive discussions, architectural planning, query context engine, and targeted code explanations.
+  2. *Composer*: Autonomous multi-file code generator and refactoring agent capable of creating, editing, and verifying code across complex repositories.
+  3. *Diff Viewer*: Interactive side-by-side verification tool to review and selectively accept or reject agent modifications before staging.
+- **RAG & Context Engine**: Local vector database synchronized on file modification events. Keeps symbol graphs, imports, and call hierarchies indexed.
+- **Agent Coordination Protocol (ACP)**: Cross-project and cross-machine agent collaboration. When working on a backend service that depends on a shared library, IDEAgent can delegate subtasks to a peer agent running on the library workspace.
+- **Model Agnostic**: Compatible with Claude 3.5/3.7 Sonnet, OpenAI GPT-4o/o1/o3, Google Gemini 1.5/2.0 Pro, and local models via Ollama or vLLM.
+
+---
+
+## 2. System Architecture
+
+The IDEAgent ecosystem consists of four interconnected layers:
+
+```
++-----------------------------------------------------------+
+|                   JetBrains IDE Plugin                    |
+|  (Chat Panel / Composer / Diff Viewer / Settings / Hotkeys) |
++-----------------------------+-----------------------------+
+                              | WebSocket / SSE / HTTP
++-----------------------------v-----------------------------+
+|                     IDEAgent Gateway                      |
+|  (Session Router / Auth / Process Manager / ACP Hub)      |
++--------------+------------------------------+-------------+
+               |                              |
++--------------v-------------+ +--------------v-------------+
+|    Agent Execution Core    | |     Context & RAG Engine   |
+| (LLM Runner / MCP Client / | | (Vector Store / Symbol DB/ |
+|  Tool Invocation Sandbox)  | |  File Watcher / Learning)  |
++----------------------------+ +----------------------------+
+```
+
+### Components
+1. **JetBrains Plugin**: Kotlin-based extension providing the UI, editor gutters, diff decorations, and action toolbar.
+2. **Gateway**: Lightweight daemon process managing agent processes, routing requests, handling authentication, and orchestrating ACP messages across machines.
+3. **Agent Core**: Executes reasoning loops, generates tool calls, validates outputs, and maintains conversational memory.
+4. **Context Engine & RAG**: Tracks workspace changes, parses abstract syntax trees (ASTs), extracts symbols, and manages vector embeddings for relevant code snippets.
+
+---
+
+## 3. Gateway Server & Deployment
+
+The Gateway acts as the central hub connecting IDEs, agents, and local RAG instances.
+
+### Installation & Launch
+```bash
+# Start the gateway daemon locally
+ideagent-gateway start --port 8080 --host 127.0.0.1
+
+# Run with custom configuration file
+ideagent-gateway start --config /path/to/gateway.yaml
+```
+
+### Remote Gateway Deployment
+When running agents on dedicated remote compute servers:
+- Secure communication via TLS and Bearer tokens.
+- Port forwarding or reverse proxy (Nginx, Caddy, Traefik).
+- Shared workspace synchronization via SSH, NFS, or git remotes.
+
+---
+
+## 4. Gateway Plugin Pairing
+
+To pair the JetBrains IDE plugin with the Gateway:
+1. Open IDE Settings: `Preferences/Settings` -> `Tools` -> `IDEAgent`.
+2. Set Gateway URL: e.g., `http://127.0.0.1:8080` (or your remote gateway address).
+3. Enter API Token if authentication is enabled.
+4. Test Connection: Verify latency, RAG status, and available models.
+5. Apply settings and open the IDEAgent tool window (Right sidebar).
+
+---
+
+## 5. Model Context Protocol (MCP) Tools Reference
+
+IDEAgent utilizes standard MCP tools for interacting with the environment:
+
+### Context & Navigation Tools
+- `mcp_context_engine(action, query, symbol_id, name)`: Query symbols, AST structures, and dependency graphs. Actions include `find_symbol`, `get_context`, and `sync_rag`.
+- `get_project_summary(project_name)`: Returns high-level architecture, language distributions, and recent change logs.
+- `search_learnings(project_name, query)`: Queries stored learnings and architectural decisions recorded during previous agent sessions.
+- `add_learning(project_name, title, content, category)`: Persists architectural rules, debugging tips, and project conventions for future sessions.
+
+### File & Code Modification Tools
+- `read_file(file_path, offset, limit)`: Paginated reading of local files up to 500 lines per call.
+- `edit_file(file_path, old_string, new_string)`: Performs exact string replacements in existing files.
+- `write_file(file_path, content)`: Creates a new file on the filesystem.
+- `record_change(project_name, file_path, change_type, description)`: Records modifications to trigger immediate RAG re-indexing.
+
+### Sandbox & Execution Tools
+- `execute(command, timeout)`: Runs shell commands in an isolated environment. Note: Destructive commands, Docker, and Git operations require explicit user approval.
+
+### Agent Coordination Protocol (ACP) Tools
+- `acp_list_agents(project_id, machine_id)`: Discovers connected peer agents across projects or machines.
+- `acp_request(to_thread, details)`: Sends an asynchronous delegation request to a peer agent.
+- `acp_report(to_thread, status, details)`: Reports back task completion or dependency blockers.
+
+### GitHub Integration Tools
+- `github_list_issues`, `github_read_issue`: Inspect issues.
+- `github_list_branches`, `github_create_branch`: Branch management.
+- `github_commit`, `github_push`: Push changes over git protocol.
+- `github_open_pr`: Open pull requests.
+
+---
+
+## 6. JetBrains Plugin Settings
+
+The plugin provides dedicated configuration panes inside the IDE:
+- **Main Settings**: Configure default model, provider, temperature, and agent persona.
+- **API Keys**: Configure Anthropic Claude, OpenAI, Google Gemini, DeepSeek, or custom OpenAI-compatible endpoints.
+- **Dedicated Models**: Assign specific specialized models for fast auto-titling, RAG embeddings, and background tasks.
+- **RAG & File Watcher**: Set file include/exclude glob patterns, indexing depth, and embedding update frequencies.
+- **Voice Tools**:
+  - *Speech-to-Text*: Local Whisper model integration for voice input.
+  - *Text-to-Speech*: Piper TTS integration for audio responses.
+
+---
+
+## 7. Server Configuration & Security Boundaries
+
+### Security Principles
+- **Sandbox Isolation**: Shell execution runs in an isolated workspace container.
+- **Confirmation Boundaries**: Git commits, pushes, file deletions, and container deployments require explicit confirmation before execution.
+- **Redaction Protection**: Sensitive tokens matching `<<REDACTED_*>>` are never echoed back to files or tools.
+- **No Blind Overrides**: Before non-trivial changes, agents state their plan and ground reasoning in verified code context.

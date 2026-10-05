@@ -1,0 +1,28 @@
+# IDEAgent
+
+> Autonomous coding agent plugin for JetBrains IDEs featuring local RAG indexing, MCP tool integration, multi-agent cross-project coordination (ACP), and an isolated gateway backend.
+
+IDEAgent operates directly inside JetBrains IDEs (IntelliJ IDEA, PyCharm, WebStorm, etc.) to perform autonomous development tasks. Unlike conversational assistants that generate standalone code snippets, IDEAgent investigates the codebase, resolves dependencies, plans multi-step changes, and edits files directly with real-time context synchronization.
+
+## Key Capabilities
+
+- **JetBrains IDE Integration**: Native tool windows for Chat, Composer (autonomous multi-file edits), and Visual Diff inspection.
+- **Context Engine**: Real-time symbol indexing and dependency tracking so agents reason on actual project structure without reading files blind.
+- **Local RAG Server**: Fast vector retrieval and automated file watching to maintain code embeddings across modifications.
+- **Agent Coordination Protocol (ACP)**: Asynchronous communication protocol allowing agents working in separate repositories or on remote machines to coordinate dependencies safely.
+- **Model Context Protocol (MCP)**: Rich ecosystem of built-in and external tools for sandbox execution, project management, and VCS operations.
+- **Privacy & Sandbox Isolation**: Granular controls requiring explicit confirmation for destructive operations, Git commits, and container execution.
+
+## Documentation
+
+- [IDEAgent Home](https://ideagent.github.io/): Product overview, key features, screenshot showcase (Chat, Composer, Diff), and installation links.
+- [Architecture Overview](https://ideagent.github.io/architecture.html): Detailed system architecture diagram and explanation of the JetBrains Plugin, Gateway, Context Engine, and Agent execution loop.
+- [Gateway Setup & Configuration](https://ideagent.github.io/gateway.html): Setup guide for the multi-agent gateway, secure networking, and ACP daemon communication.
+- [Gateway Plugin Setup](https://ideagent.github.io/gateway_plugin_setup.html): Step-by-step instructions for pairing the JetBrains plugin with local or remote gateway backends.
+- [MCP Tools Reference](https://ideagent.github.io/mcp.html): Full reference for built-in Model Context Protocol tools (context queries, learning management, ACP coordination, and GitHub actions).
+- [JetBrains Plugin Settings](https://ideagent.github.io/plugin.html): Complete walkthrough of plugin preferences (API keys, dedicated models, RAG watcher, speech-to-text, and text-to-speech).
+- [Server Configuration Reference](https://ideagent.github.io/server_config.html): Gateway configuration files, environment variables, sandbox controls, and security policies.
+
+## Full Documentation
+
+- [Full Text Documentation](https://ideagent.github.io/llms-full.txt): Single-file Markdown compilation of all documentation pages for LLMs and agents.
